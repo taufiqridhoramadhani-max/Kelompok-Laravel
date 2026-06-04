@@ -9,14 +9,7 @@ class HomeController extends Controller
     //
 }
 
-<?php
-
-namespace App\Http\Controllers;
-
-class HomeController extends Controller
+public function index()
 {
-    public function index()
-    {
-        return view('home');
-    }
+    return view('home');
 }
