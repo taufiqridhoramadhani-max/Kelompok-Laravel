@@ -63,7 +63,7 @@
                 serta informasi kontak dan media sosial.
             </p>
 
-            <a href="/profile" class="btn btn-light btn-lg">
+            <a href="/isi" class="btn btn-light btn-lg">
                 Lihat Anggota
             </a>
 
