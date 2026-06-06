@@ -329,7 +329,7 @@
                     anggota kelompok beserta skill dan biodata mereka.
                 </p>
 
-                <a href="/profile" class="btn btn-glass btn-lg">
+                <a href="/isi" class="btn btn-glass btn-lg">
                     Lihat Profile Anggota
                 </a>
 
