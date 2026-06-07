@@ -155,6 +155,10 @@
             color: #cbd5e1;
         }
 
+        .btn{
+            border-radius: 12px !important;
+        }
+
     </style>
 </head>
 <body>
@@ -164,9 +168,19 @@
     <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
         <div class="container">
 
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 Portfolio Kelompok
             </a>
+
+            <div>
+                <a href="/isi" class="btn btn-sm btn-outline-light me-2">
+                    Profil
+                </a>
+
+                <a href="/project" class="btn btn-sm btn-light">
+                    Project & Contact
+                </a>
+            </div>
 
         </div>
     </nav>
@@ -192,10 +206,13 @@
                 dengan tampilan modern dan profesional.
             </p>
 
-            <a href="/isi" class="btn btn-glass btn-lg">
-                Lihat Anggota
+            <a href="/isi" class="btn btn-glass btn-lg me-2">
+                Profil Anggota
             </a>
 
+            <a href="/project" class="btn btn-outline-light btn-lg">
+                Project & Contact
+            </a>
         </div>
     </section>
 
@@ -267,12 +284,12 @@
                             </div>
 
                             <h4>
-                                Project
+                                Project & Contact
                             </h4>
 
                             <p>
-                                Menampilkan daftar project dan karya
-                                yang pernah dibuat anggota kelompok.
+                                Menampilkan project kelompok, teknologi
+                                yang digunakan, serta informasi kontak.
                             </p>
 
                         </div>
@@ -292,12 +309,12 @@
                             </div>
 
                             <h4>
-                                Contact
+                                Laravel Framework
                             </h4>
 
                             <p>
-                                Menampilkan informasi kontak dan media
-                                sosial untuk terhubung dengan anggota.
+                                Website dibangun menggunakan Laravel 12,
+                                Bootstrap, dan konsep MVC yang terstruktur.
                             </p>
 
                         </div>
@@ -321,16 +338,16 @@
             <div class="cta-box text-center">
 
                 <h2 class="fw-bold">
-                    Kenali Anggota Kelompok Kami
+                    Mulai Jelajahi Portfolio Kami
                 </h2>
 
                 <p class="mt-3 mb-4">
-                    Klik tombol di bawah untuk melihat profil lengkap
-                    anggota kelompok beserta skill dan biodata mereka.
+                    Lihat profil anggota, project yang telah dibuat,
+                    serta teknologi yang digunakan dalam pengembangan website ini.
                 </p>
 
                 <a href="/isi" class="btn btn-glass btn-lg">
-                    Lihat Profile Anggota
+                    Jelajahi Sekarang
                 </a>
 
             </div>

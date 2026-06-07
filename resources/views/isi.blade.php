@@ -29,6 +29,17 @@
             color: white;
         }
 
+        .navbar{
+            background: rgba(255,255,255,0.08) !important;
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .navbar-brand{
+            font-weight:700;
+            font-size:22px;
+        }
+
         .hero{
             text-align: center;
             padding-top: 80px;
@@ -144,9 +155,33 @@
             color: #94a3b8;
             font-size: 14px;
         }
+
+        .btn{
+            border-radius: 12px !important;
+        }
     </style>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <div class="container">
+
+        <a class="navbar-brand" href="/">
+            Portfolio Kelompok
+        </a>
+
+        <div>
+            <a href="/isi" class="btn btn-sm btn-light me-2">
+                Profil
+            </a>
+
+            <a href="/project" class="btn btn-sm btn-outline-light">
+                Project
+            </a>
+        </div>
+
+    </div>
+</nav>
 
 <div class="container">
 
@@ -221,6 +256,18 @@
         </div>
 
         @endforeach
+
+    </div>
+
+    <div class="text-center mb-5">
+
+        <a href="/" class="btn btn-outline-light me-2">
+            Home
+        </a>
+
+        <a href="/project" class="btn btn-light">
+            Project & Contact
+        </a>
 
     </div>
 
