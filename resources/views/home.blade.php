@@ -5,91 +5,241 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Kelompok</title>
 
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
+
+        *{
+            font-family: 'Poppins', sans-serif;
         }
 
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0d6efd, #6610f2);
+        body{
+            background:
+            radial-gradient(circle at top left, #667eea 0%, transparent 35%),
+            radial-gradient(circle at bottom right, #764ba2 0%, transparent 35%),
+            #0f172a;
             color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+
+        .navbar{
+            background: rgba(255,255,255,0.08) !important;
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .navbar-brand{
+            font-weight: 700;
+            font-size: 22px;
+        }
+
+        /* Hero */
+
+        .hero{
+            min-height: 100vh;
             display: flex;
             align-items: center;
+            text-align: center;
         }
 
-        .feature-card {
-            transition: 0.3s;
+        .hero h1{
+            font-size: 70px;
+            font-weight: 700;
+            background: linear-gradient(to right,#ffffff,#cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
+        .hero p{
+            color: #cbd5e1;
+            font-size: 18px;
         }
 
-        footer {
-            background-color: #212529;
+        .line{
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(to right,#6366f1,#8b5cf6);
+            margin: 25px auto;
+            border-radius: 50px;
+        }
+
+        /* Button */
+
+        .btn-glass{
+            background: linear-gradient(135deg,#6366f1,#8b5cf6);
+            border: none;
             color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            transition: 0.4s;
+            font-weight: 500;
         }
+
+        .btn-glass:hover{
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(99,102,241,.4);
+        }
+
+        /* Section */
+
+        .section-title{
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-text{
+            color: #cbd5e1;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        /* Glass Cards */
+
+        .feature-card{
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(18px);
+            border-radius: 30px;
+            color: white;
+            transition: 0.5s ease;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .feature-card:hover{
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(99,102,241,0.35);
+        }
+
+        .feature-card .card-body{
+            padding: 35px;
+        }
+
+        .feature-icon{
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card p{
+            color: #cbd5e1;
+        }
+
+        /* CTA */
+
+        .cta-box{
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            backdrop-filter: blur(18px);
+            border-radius: 35px;
+            padding: 50px;
+        }
+
+        .cta-box p{
+            color: #cbd5e1;
+        }
+
+        /* Footer */
+
+        footer{
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #cbd5e1;
+        }
+
+        .btn{
+            border-radius: 12px !important;
+        }
+
     </style>
 </head>
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
+
+            <a class="navbar-brand" href="/">
                 Portfolio Kelompok
             </a>
+
+            <div>
+                <a href="/isi" class="btn btn-sm btn-outline-light me-2">
+                    Profil
+                </a>
+
+                <a href="/project" class="btn btn-sm btn-light">
+                    Project & Contact
+                </a>
+            </div>
+
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container text-center">
+    <!-- Hero -->
 
-            <h1 class="display-3 fw-bold">
+    <section class="hero">
+        <div class="container">
+
+            <h1>
                 Selamat Datang
             </h1>
 
+            <div class="line"></div>
+
             <p class="lead mt-3">
-                Website Portofolio Kelompok yang dibuat menggunakan
-                Laravel Framework.
+                Website Portfolio Kelompok Berbasis Laravel Framework
             </p>
 
             <p class="mb-4">
                 Menampilkan profil anggota, skill, project,
-                serta informasi kontak dan media sosial.
+                serta informasi kontak dan media sosial
+                dengan tampilan modern dan profesional.
             </p>
 
-            <a href="/profile" class="btn btn-light btn-lg">
-                Lihat Anggota
+            <a href="/isi" class="btn btn-glass btn-lg me-2">
+                Profil Anggota
             </a>
 
+            <a href="/project" class="btn btn-outline-light btn-lg">
+                Project & Contact
+            </a>
         </div>
     </section>
 
-    <!-- Tentang Kelompok -->
+    <!-- Tentang -->
+
     <section class="py-5">
-        <div class="container">
+        <div class="container text-center">
 
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Tentang Kelompok</h2>
+            <h2 class="section-title">
+                Tentang Kelompok
+            </h2>
 
-                <p class="text-muted">
-                    Kami adalah kelompok mahasiswa yang berkolaborasi
-                    dalam pengembangan website berbasis Laravel.
-                    Website ini dibuat sebagai media untuk menampilkan
-                    profil anggota, keahlian, project, dan kontak.
-                </p>
-            </div>
+            <p class="section-text">
+                Kami adalah kelompok mahasiswa yang berkolaborasi dalam
+                pengembangan website berbasis Laravel. Website ini dibuat
+                sebagai media untuk menampilkan profil anggota, keahlian,
+                project, serta informasi kontak secara profesional dengan
+                konsep desain Modern Dark Glassmorphism.
+            </p>
 
         </div>
     </section>
 
-    <!-- Preview Fitur -->
-    <section class="bg-light py-5">
+    <!-- Fitur -->
+
+    <section class="py-5">
+
         <div class="container">
 
             <h2 class="text-center fw-bold mb-5">
@@ -99,87 +249,125 @@
             <div class="row g-4">
 
                 <div class="col-md-4">
-                    <div class="card feature-card shadow h-100">
+
+                    <div class="card feature-card">
+
                         <div class="card-body text-center">
 
-                            <h1>👤</h1>
+                            <div class="feature-icon">
+                                👤
+                            </div>
 
-                            <h4>Profile Anggota</h4>
+                            <h4>
+                                Profile Anggota
+                            </h4>
 
                             <p>
-                                Menampilkan foto anggota,
-                                biodata, dan skill yang dimiliki.
+                                Menampilkan foto anggota, biodata,
+                                serta kemampuan dan skill yang dimiliki.
                             </p>
 
                         </div>
+
                     </div>
+
                 </div>
 
                 <div class="col-md-4">
-                    <div class="card feature-card shadow h-100">
+
+                    <div class="card feature-card">
+
                         <div class="card-body text-center">
 
-                            <h1>💼</h1>
+                            <div class="feature-icon">
+                                💼
+                            </div>
 
-                            <h4>Project</h4>
+                            <h4>
+                                Project & Contact
+                            </h4>
 
                             <p>
-                                Menampilkan daftar project yang
-                                pernah dikerjakan anggota kelompok.
+                                Menampilkan project kelompok, teknologi
+                                yang digunakan, serta informasi kontak.
                             </p>
 
                         </div>
+
                     </div>
+
                 </div>
 
                 <div class="col-md-4">
-                    <div class="card feature-card shadow h-100">
+
+                    <div class="card feature-card">
+
                         <div class="card-body text-center">
 
-                            <h1>📞</h1>
+                            <div class="feature-icon">
+                                📞
+                            </div>
 
-                            <h4>Contact</h4>
+                            <h4>
+                                Laravel Framework
+                            </h4>
 
                             <p>
-                                Menampilkan kontak dan media sosial
-                                untuk terhubung dengan anggota.
+                                Website dibangun menggunakan Laravel 12,
+                                Bootstrap, dan konsep MVC yang terstruktur.
                             </p>
 
                         </div>
+
                     </div>
+
                 </div>
 
             </div>
 
         </div>
+
     </section>
 
     <!-- CTA -->
-    <section class="py-5 text-center">
+
+    <section class="py-5">
+
         <div class="container">
 
-            <h2 class="fw-bold">
-                Kenali Anggota Kelompok Kami
-            </h2>
+            <div class="cta-box text-center">
 
-            <p class="text-muted">
-                Klik tombol di bawah untuk melihat profil lengkap anggota.
-            </p>
+                <h2 class="fw-bold">
+                    Mulai Jelajahi Portfolio Kami
+                </h2>
 
-            <a href="/profile" class="btn btn-primary btn-lg">
-                Lihat Profile Anggota
-            </a>
+                <p class="mt-3 mb-4">
+                    Lihat profil anggota, project yang telah dibuat,
+                    serta teknologi yang digunakan dalam pengembangan website ini.
+                </p>
+
+                <a href="/isi" class="btn btn-glass btn-lg">
+                    Jelajahi Sekarang
+                </a>
+
+            </div>
 
         </div>
+
     </section>
 
     <!-- Footer -->
+
     <footer class="py-4 text-center">
+
         <div class="container">
+
             <p class="mb-0">
-                © 2026 Portfolio Kelompok Laravel
+                © 2026 Portfolio Kelompok Laravel • Universitas Al-Ghifari
             </p>
+
         </div>
+
     </footer>
 
 </body>
