@@ -173,12 +173,12 @@
             </a>
 
             <div>
-                <a href="/isi" class="btn btn-sm btn-outline-light me-2">
-                    Profil
+                <a href="/login" class="btn btn-glass btn-lg me-2">
+                    Login
                 </a>
 
-                <a href="/project" class="btn btn-sm btn-light">
-                    Project & Contact
+                <a href="/register" class="btn btn-outline-light btn-lg">
+                    Register
                 </a>
             </div>
 
@@ -346,9 +346,9 @@
                     serta teknologi yang digunakan dalam pengembangan website ini.
                 </p>
 
-                <a href="/isi" class="btn btn-glass btn-lg">
-                    Jelajahi Sekarang
-                </a>
+                    <a href="/login" class="btn btn-glass btn-lg">
+                        Mulai Sekarang
+                    </a>
 
             </div>
 
