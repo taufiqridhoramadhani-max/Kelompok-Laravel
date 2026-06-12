@@ -18,7 +18,6 @@ Route::get('/isi', [IsiController::class, 'index']);
 
 Route::get('/project', [ProjectController::class, 'index']);
 
-
 /*
 |--------------------------------------------------------------------------
 | Auth Route
@@ -36,7 +35,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/project/{project}', [ProjectController::class, 'update']);
 
 });
-
 
 /*
 |--------------------------------------------------------------------------
