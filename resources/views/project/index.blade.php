@@ -188,92 +188,67 @@
 
     </div>
 
+    <div class="text-center mb-5">
+        <a href="/project/create" class="btn btn-glass">
+            + Tambah Project
+        </a>
+    </div>
+
     <div class="row g-4">
 
-        <div class="col-md-4">
-            <div class="card glass-card">
-                <div class="card-body">
-                    <h4>Portfolio Website</h4>
-                    <p>
-                        Website portfolio kelompok berbasis Laravel 12
-                        dengan desain modern glassmorphism.
-                    </p>
-                </div>
-            </div>
-        </div>
+        @forelse($projects as $project)
 
         <div class="col-md-4">
             <div class="card glass-card">
                 <div class="card-body">
-                    <h4>Profile Anggota</h4>
+
+                    <h4>{{ $project->nama_project }}</h4>
+
                     <p>
-                        Menampilkan biodata, skill, dan informasi
-                        anggota kelompok secara profesional.
+                        {{ $project->deskripsi }}
                     </p>
+
+                    <span class="tech-badge">
+                        {{ $project->teknologi }}
+                    </span>
+
+                    <div class="mt-3">
+
+                        <a href="/project/{{ $project->id }}/edit"
+                        class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
+
+                        <form action="/project/{{ $project->id }}"
+                            method="POST"
+                            class="d-inline">
+
+                            @csrf
+                            @method('DELETE')
+
+                            <button
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('Yakin ingin menghapus project ini?')">
+
+                                Hapus
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card glass-card">
-                <div class="card-body">
-                    <h4>Responsive Design</h4>
-                    <p>
-                        Dibangun menggunakan Bootstrap sehingga
-                        dapat berjalan di berbagai ukuran layar.
-                    </p>
-                </div>
-            </div>
+        @empty
+
+        <div class="col-12 text-center">
+            <h4>Belum ada project</h4>
         </div>
 
-        <div class="col-md-4">
-            <div class="card glass-card">
-                <div class="card-body">
-                    <h4>Version Control</h4>
-                    <p>
-                        Pengembangan website dilakukan menggunakan GitHub
-                        dengan sistem branch dan merge antar anggota.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="text-center mt-5">
-
-        <h3 class="mb-4">
-            Teknologi Yang Digunakan
-        </h3>
-
-        <span class="tech-badge">Laravel 12</span>
-        <span class="tech-badge">Bootstrap 5</span>
-        <span class="tech-badge">Blade Template</span>
-        <span class="tech-badge">GitHub</span>
-        <span class="tech-badge">MVC</span>
-        <span class="tech-badge">Git Branching</span>
-
-    </div>
-
-    <div class="contact-box mt-5">
-
-        <h3 class="mb-4">
-            Contact Kelompok
-        </h3>
-
-        <p><strong>Email :</strong> Tidak Tersedia</p>
-
-        <p><strong>Instagram :</strong> Tidak Tersedia</p>
-
-        <p><strong>GitHub :</strong> https://github.com/taufiqridhoramadhani-max/Kelompok-Laravel.git</p>
-
-        <a href="/" class="btn btn-outline-light mt-3 me-2">
-            Home
-        </a>
-
-        <a href="/isi" class="btn btn-light mt-3">
-            Profil Anggota
-        </a>
+        @endforelse
 
     </div>
 
