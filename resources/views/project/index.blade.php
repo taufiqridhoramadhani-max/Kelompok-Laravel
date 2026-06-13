@@ -26,7 +26,7 @@
         }
 
         .navbar{
-           background: rgba(255,255,255,0.08) !important;
+            background: rgba(255,255,255,0.08) !important;
             backdrop-filter: blur(18px);
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
@@ -50,6 +50,10 @@
             -webkit-text-fill-color:transparent;
         }
 
+        .hero p{
+            color:#cbd5e1;
+        }
+
         .line{
             width:120px;
             height:5px;
@@ -59,21 +63,12 @@
         }
 
         .glass-card{
-            background:rgba(255,255,255,.08) !important;
+            background:rgba(255,255,255,.08);
             border:1px solid rgba(255,255,255,.15);
             backdrop-filter:blur(18px);
             border-radius:30px;
-            height:100%;
             transition:.4s;
-            color:white !important;
-        }
-
-        .card{
-            background: transparent !important;
-        }
-
-        .card-body{
-            color:white !important;
+            height:100%;
         }
 
         .glass-card:hover{
@@ -81,17 +76,9 @@
             box-shadow:0 20px 50px rgba(99,102,241,.35);
         }
 
-        .glass-card .card-body{
+        .card-body{
             padding:30px;
             color:white;
-        }
-
-        .glass-card h4{
-            color:white;
-        }
-
-        .glass-card p{
-            color:#cbd5e1;
         }
 
         .tech-badge{
@@ -99,27 +86,25 @@
             padding:10px 18px;
             border-radius:30px;
             display:inline-block;
-            margin:5px;
-        }
-
-        .contact-box{
-            background:rgba(255,255,255,.08);
-            border:1px solid rgba(255,255,255,.15);
-            backdrop-filter:blur(18px);
-            border-radius:30px;
-            padding:40px;
+            margin-top:10px;
         }
 
         .btn-glass{
             background:linear-gradient(135deg,#6366f1,#8b5cf6);
             border:none;
             color:white;
-            border-radius:50px;
-            padding:12px 30px;
+            border-radius:15px;
+            padding:12px 25px;
+            transition:.3s;
         }
 
-        .btn-glass:hover{
-            color:white;
+        .btn{
+            border-radius:12px !important;
+            transition:.3s;
+        }
+
+        .btn:hover{
+            transform:translateY(-3px);
         }
 
         .footer{
@@ -127,26 +112,6 @@
             text-align:center;
             color:#94a3b8;
             padding-bottom:30px;
-        }
-
-        .glass-card{
-            color: white !important;
-        }
-
-        .glass-card .card-body{
-            color: white !important;
-        }
-
-        .glass-card h4{
-            color: white !important;
-        }
-
-        .glass-card p{
-            color: #cbd5e1 !important;
-        }
-
-        .btn{
-            border-radius: 12px !important;
         }
 
     </style>
@@ -188,18 +153,21 @@
 
     </div>
 
+    @auth
     <div class="text-center mb-5">
         <a href="/project/create" class="btn btn-glass">
             + Tambah Project
         </a>
     </div>
+    @endauth
 
     <div class="row g-4">
 
         @forelse($projects as $project)
 
         <div class="col-md-4">
-            <div class="card glass-card">
+            <div class="glass-card">
+
                 <div class="card-body">
 
                     <h4>{{ $project->nama_project }}</h4>
@@ -212,6 +180,7 @@
                         {{ $project->teknologi }}
                     </span>
 
+                    @auth
                     <div class="mt-3">
 
                         <a href="/project/{{ $project->id }}/edit"
@@ -219,7 +188,8 @@
                             Edit
                         </a>
 
-                        <form action="/project/{{ $project->id }}"
+                        <form
+                            action="/project/{{ $project->id }}"
                             method="POST"
                             class="d-inline">
 
@@ -237,8 +207,10 @@
                         </form>
 
                     </div>
+                    @endauth
 
                 </div>
+
             </div>
         </div>
 
@@ -254,6 +226,11 @@
 
     <div class="footer">
         © 2026 Portfolio Kelompok Laravel • Universitas Al-Ghifari
+
+        <div style="margin-top:15px;">
+        <p style="margin:0;">📧 kelompok@gmail.com</p>
+        <p style="margin:0;">📷 Instagram: @kelompok</p>
+    </div>
     </div>
 
 </div>
