@@ -32,8 +32,18 @@
                             </p>
 
                             <p>
+                                <p>
                                 <strong>Email:</strong>
                                 {{ Auth::user()->email }}
+                            </p>
+
+                            <p class="mt-2">
+                                <strong>Status:</strong>
+
+                                <span class="px-3 py-1 bg-green-500 text-white rounded-full text-sm">
+                                    Login Aktif
+                                </span>
+                            </p>
                             </p>
                         </div>
 
