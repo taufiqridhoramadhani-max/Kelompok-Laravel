@@ -1,116 +1,102 @@
 ```php
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Project</title>
+@extends('layouts.public')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+@section('title', 'Tambah Project')
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+@push('styles')
     <style>
-
-        *{
-            font-family:'Poppins',sans-serif;
+        .container-box {
+            max-width: 720px;
+            margin: 40px auto;
+            padding: 0 15px;
         }
 
-        body{
-            background:
-            radial-gradient(circle at top left,#667eea 0%,transparent 35%),
-            radial-gradient(circle at bottom right,#764ba2 0%,transparent 35%),
-            #0f172a;
-
-            min-height:100vh;
-            color:white;
-        }
-
-        .navbar{
-            background: rgba(255,255,255,0.08) !important;
+        .glass-card {
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.15);
             backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 14px 40px rgba(0,0,0,.22);
         }
 
-        .navbar-brand{
-            font-weight:700;
-            font-size:22px;
+        .glass-card h2 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: white;
         }
 
-        .container-box{
-            max-width:700px;
-            margin:auto;
-            margin-top:60px;
-            margin-bottom:60px;
+        .form-label {
+            color: #cbd5e1;
+            font-weight: 500;
         }
 
-        .glass-card{
-            background:rgba(255,255,255,.08);
-            border:1px solid rgba(255,255,255,.15);
-            backdrop-filter:blur(18px);
-            border-radius:30px;
-            padding:40px;
-            box-shadow:0 10px 30px rgba(0,0,0,.2);
+        .form-control {
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.15);
+            color: white;
+            border-radius: 15px;
+            padding: 14px;
         }
 
-        h2{
-            text-align:center;
-            font-weight:700;
-            margin-bottom:30px;
+        .form-control:focus {
+            background: rgba(255,255,255,.12);
+            color: white;
+            border-color: #8b5cf6;
+            box-shadow: none;
         }
 
-        .form-label{
-            font-weight:500;
+        .form-control::placeholder {
+            color: rgba(255,255,255,.65);
         }
 
-        .form-control{
-            background:rgba(255,255,255,.08);
-            border:1px solid rgba(255,255,255,.15);
-            color:white;
-            border-radius:15px;
-            padding:14px;
+        .btn-glass {
+            background: linear-gradient(135deg,#6366f1,#8b5cf6);
+            border: none;
+            color: white;
+            border-radius: 15px;
+            padding: 12px 30px;
+            transition: transform .3s ease, box-shadow .3s ease;
         }
 
-        .form-control:focus{
-            background:rgba(255,255,255,.12);
-            color:white;
-            border-color:#8b5cf6;
-            box-shadow:none;
+        .btn-glass:hover,
+        .btn-outline-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px rgba(99,102,241,.24);
         }
 
-        textarea.form-control{
-            min-height:120px;
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .btn-glass{
-            background:linear-gradient(135deg,#6366f1,#8b5cf6);
-            border:none;
-            color:white;
-            border-radius:15px;
-            padding:12px 30px;
-            transition:.3s;
+        .form-actions a,
+        .form-actions button {
+            flex: 1 1 210px;
         }
 
-        .btn:hover{
-            transform:translateY(-3px);
-        }
+        @media (max-width: 576px) {
+            .glass-card {
+                padding: 30px 20px;
+            }
 
+            .container-box {
+                margin: 24px auto;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+        }
     </style>
-</head>
-<body>
+@endpush
 
-<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="/">
-            Portfolio Kelompok
-        </a>
-    </div>
-</nav>
-
+@section('content')
 <div class="container container-box">
-
     <div class="glass-card">
-
         <h2>Tambah Project</h2>
 
         @if ($errors->any())
@@ -123,64 +109,30 @@
             </div>
         @endif
 
-        <form action="/project" method="POST">
+        <form action="{{ url('/project') }}" method="POST">
             @csrf
 
             <div class="mb-3">
-                <label class="form-label">
-                    Nama Project
-                </label>
-
-                <input
-                    type="text"
-                    name="nama_project"
-                    class="form-control">
+                <label class="form-label text-white">Nama Project</label>
+                <input type="text" name="nama_project" class="form-control" value="{{ old('nama_project') }}">
             </div>
 
             <div class="mb-3">
-                <label class="form-label">
-                    Deskripsi
-                </label>
-
-                <textarea
-                    name="deskripsi"
-                    class="form-control"></textarea>
+                <label class="form-label text-white">Deskripsi</label>
+                <textarea name="deskripsi" class="form-control">{{ old('deskripsi') }}</textarea>
             </div>
 
             <div class="mb-4">
-                <label class="form-label">
-                    Teknologi
-                </label>
-
-                <input
-                    type="text"
-                    name="teknologi"
-                    class="form-control">
+                <label class="form-label text-white">Teknologi</label>
+                <input type="text" name="teknologi" class="form-control" value="{{ old('teknologi') }}">
             </div>
 
-            <div class="d-flex justify-content-between">
-
-                <a href="/project"
-                class="btn btn-outline-light">
-                    Kembali
-                </a>
-
-                <button
-                    type="submit"
-                    class="btn btn-glass">
-
-                    Simpan Project
-
-                </button>
-
+            <div class="form-actions">
+                <a href="{{ url('/project') }}" class="btn btn-outline-light">Kembali</a>
+                <button type="submit" class="btn btn-glass">Simpan Project</button>
             </div>
-
         </form>
-
     </div>
-
 </div>
-
-</body>
-</html>
+@endsection
 ```

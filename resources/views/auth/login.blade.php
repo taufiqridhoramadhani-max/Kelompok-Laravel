@@ -1,107 +1,71 @@
-```html
-<x-guest-layout>
-
-<div class="flex items-center justify-center min-h-screen px-4">
-
-    <div class="w-full max-w-md">
-
-        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-8">
-
+﻿<x-guest-layout>
+    <div class="flex items-center justify-center min-h-screen px-4 py-10">
+        <div class="auth-page auth-card">
             <div class="text-center mb-6">
-
-                <h1 class="text-4xl font-bold text-white">
-                    Login
-                </h1>
-
-                <p class="text-gray-300 mt-2">
-                    Portfolio Kelompok Laravel
-                </p>
-
-                <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
-
+                <h1 class="text-3xl font-semibold text-white">Login</h1>
+                <p class="mt-3 text-sm text-slate-300">Masuk ke akun portfolio kelompok dan lanjutkan ke dashboard.</p>
             </div>
 
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('login') }}" class="space-y-5">
                 @csrf
 
-                <!-- Email -->
-                <div>
-                    <label class="block text-white mb-2">
-                        Email
-                    </label>
+                    <div>
+                        <x-input-label for="email" :value="__('Email')" class="text-white" />
+                        <x-text-input
+                            id="email"
+                            class="mt-2"
+                            type="email"
+                            name="email"
+                            :value="old('email')"
+                            required
+                            autofocus
+                            placeholder="Masukkan email"
+                        />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
 
-                    <input
-                        type="email"
-                        name="email"
-                        value="{{ old('email') }}"
-                        required
-                        autofocus
-                        class="w-full rounded-xl border-0 bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
-                        placeholder="Masukkan email">
-                </div>
+                    <div>
+                        <x-input-label for="password" :value="__('Password')" class="text-white" />
+                        <x-text-input
+                            id="password"
+                            class="mt-2"
+                            type="password"
+                            name="password"
+                            required
+                            placeholder="Masukkan password"
+                        />
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
 
-                <!-- Password -->
-                <div class="mt-4">
-                    <label class="block text-white mb-2">
-                        Password
-                    </label>
+                    <div class="flex items-center justify-between gap-4 text-sm text-gray-300">
+                        <label class="flex items-center gap-2">
+                            <input
+                                id="remember"
+                                name="remember"
+                                type="checkbox"
+                                class="h-4 w-4 rounded border-white/20 bg-slate-900 text-indigo-500 focus:ring-indigo-500"
+                            />
+                            <span>Remember me</span>
+                        </label>
 
-                    <input
-                        type="password"
-                        name="password"
-                        required
-                        class="w-full rounded-xl border-0 bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
-                        placeholder="Masukkan password">
-                </div>
+                        <a href="{{ route('password.request') }}" class="text-indigo-200 hover:text-white">
+                            Lupa password?
+                        </a>
+                    </div>
 
-                <!-- Remember -->
-                <div class="mt-4 flex items-center">
-
-                    <input
-                        type="checkbox"
-                        name="remember"
-                        id="remember"
-                        class="rounded">
-
-                    <label
-                        for="remember"
-                        class="ml-2 text-gray-300">
-                        Remember Me
-                    </label>
-
-                </div>
-
-                <!-- Button -->
-                <button
-                    type="submit"
-                    class="w-full mt-6 bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 rounded-xl font-semibold hover:scale-105 transition">
-
-                    Login
-
-                </button>
-
-                <!-- Home -->
-                <div class="text-center mt-5">
-
-                    <a
-                        href="{{ url('/') }}"
-                        class="text-indigo-300 hover:text-white">
-
-                        ← Kembali ke Home
-
-                    </a>
-
-                </div>
-
-            </form>
-
+                    <div class="space-y-3">
+                        <x-primary-button class="w-full">Login</x-primary-button>
+                        <x-secondary-button class="w-full" type="button" onclick="location.href='{{ route('register') }}'">
+                            Buat Akun Baru
+                        </x-secondary-button>
+                        <a href="{{ url('/') }}" class="inline-flex justify-center items-center w-full px-4 py-3 rounded-2xl border border-slate-500/20 text-white bg-slate-900/60 hover:bg-slate-900/80 transition">
+                            Kembali ke Beranda
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
-
     </div>
-
-</div>
-
 </x-guest-layout>
-```

@@ -1,135 +1,80 @@
-```html
-<x-guest-layout>
-
-<div class="flex items-center justify-center min-h-screen px-4">
-
-    <div class="w-full max-w-md">
-
-        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-8">
-
+﻿<x-guest-layout>
+    <div class="flex items-center justify-center min-h-screen px-4 py-10">
+        <div class="auth-page auth-card">
             <div class="text-center mb-6">
-
-                <h1 class="text-4xl font-bold text-white">
-                    Register
-                </h1>
-
-                <p class="text-gray-300 mt-2">
-                    Portfolio Kelompok Laravel
-                </p>
-
-                <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
-
+                <h1 class="text-3xl font-semibold text-white">Register</h1>
+                <p class="mt-3 text-sm text-slate-300">Daftar akun baru untuk mengelola project dan profil tim.</p>
             </div>
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" class="space-y-5">
                 @csrf
 
-                <!-- Name -->
-                <div>
-                    <label class="block text-white mb-2">
-                        Nama
-                    </label>
+                    <div>
+                        <x-input-label for="name" :value="__('Nama')" class="text-white" />
+                        <x-text-input
+                            id="name"
+                            class="mt-2"
+                            type="text"
+                            name="name"
+                            :value="old('name')"
+                            required
+                            autofocus
+                            placeholder="Masukkan nama"
+                        />
+                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    </div>
 
-                    <input
-                        type="text"
-                        name="name"
-                        value="{{ old('name') }}"
-                        required
-                        autofocus
-                        class="w-full rounded-xl border-0 bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
-                        placeholder="Masukkan nama">
+                    <div>
+                        <x-input-label for="email" :value="__('Email')" class="text-white" />
+                        <x-text-input
+                            id="email"
+                            class="mt-2"
+                            type="email"
+                            name="email"
+                            :value="old('email')"
+                            required
+                            placeholder="Masukkan email"
+                        />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
 
-                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                </div>
+                    <div>
+                        <x-input-label for="password" :value="__('Password')" class="text-white" />
+                        <x-text-input
+                            id="password"
+                            class="mt-2"
+                            type="password"
+                            name="password"
+                            required
+                            placeholder="Masukkan password"
+                        />
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
 
-                <!-- Email -->
-                <div class="mt-4">
-                    <label class="block text-white mb-2">
-                        Email
-                    </label>
+                    <div>
+                        <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" class="text-white" />
+                        <x-text-input
+                            id="password_confirmation"
+                            class="mt-2"
+                            type="password"
+                            name="password_confirmation"
+                            required
+                            placeholder="Konfirmasi password"
+                        />
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    </div>
 
-                    <input
-                        type="email"
-                        name="email"
-                        value="{{ old('email') }}"
-                        required
-                        class="w-full rounded-xl border-0 bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
-                        placeholder="Masukkan email">
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                </div>
-
-                <!-- Password -->
-                <div class="mt-4">
-                    <label class="block text-white mb-2">
-                        Password
-                    </label>
-
-                    <input
-                        type="password"
-                        name="password"
-                        required
-                        class="w-full rounded-xl border-0 bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
-                        placeholder="Masukkan password">
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                </div>
-
-                <!-- Confirm Password -->
-                <div class="mt-4">
-                    <label class="block text-white mb-2">
-                        Konfirmasi Password
-                    </label>
-
-                    <input
-                        type="password"
-                        name="password_confirmation"
-                        required
-                        class="w-full rounded-xl border-0 bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-500"
-                        placeholder="Konfirmasi password">
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-                </div>
-
-                <!-- Register Button -->
-                <button
-                    type="submit"
-                    class="w-full mt-6 bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 rounded-xl font-semibold hover:scale-105 transition">
-
-                    Register
-
-                </button>
-
-                <!-- Link Login -->
-                <div class="text-center mt-5">
-
-                    <a
-                        href="{{ route('login') }}"
-                        class="text-indigo-300 hover:text-white">
-
-                        Sudah punya akun? Login
-
-                    </a>
-
-                </div>
-
-                <!-- Link Home -->
-                <div class="text-center mt-3">
-
-                    <a
-                        href="{{ url('/') }}"
-                        class="text-gray-300 hover:text-white">
-
-                        ← Kembali ke Home
-
-                    </a>
-
-                </div>
-
-            </form>
-
+                    <div class="space-y-3">
+                        <x-primary-button class="w-full">Register</x-primary-button>
+                        <x-secondary-button class="w-full" type="button" onclick="location.href='{{ route('login') }}'">
+                            Sudah punya akun? Login
+                        </x-secondary-button>
+                        <a href="{{ url('/') }}" class="inline-flex justify-center items-center w-full px-4 py-3 rounded-2xl border border-slate-500/20 text-white bg-slate-900/60 hover:bg-slate-900/80 transition">
+                            Kembali ke Beranda
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
-
     </div>
-
-</div>
-
 </x-guest-layout>
-```

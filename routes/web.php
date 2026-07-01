@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::put('/project/{project}', [ProjectController::class, 'update']);
 
+    Route::delete('/project/{project}', [ProjectController::class, 'destroy']);
+
 });
 
 /*
