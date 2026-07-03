@@ -1,0 +1,33 @@
+### Get list of projects
+GET http://127.0.0.1:8000/api/projects
+Accept: application/json
+
+### Create a new project
+POST http://127.0.0.1:8000/api/projects
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nama_project": "Portfolio Website",
+  "deskripsi": "Website portfolio untuk presentasi tugas kuliah.",
+  "teknologi": "Laravel, Tailwind, Vite"
+}
+
+### Get a single project by ID
+GET http://127.0.0.1:8000/api/projects/1
+Accept: application/json
+
+### Update a project by ID
+PUT http://127.0.0.1:8000/api/projects/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "nama_project": "Portfolio Website Updated",
+  "deskripsi": "Update deskripsi project portfolio.",
+  "teknologi": "Laravel 12, Tailwind CSS, Vite"
+}
+
+### Delete a project by ID
+DELETE http://127.0.0.1:8000/api/projects/1
+Accept: application/json
