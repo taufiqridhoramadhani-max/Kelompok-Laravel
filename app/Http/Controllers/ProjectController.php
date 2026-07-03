@@ -32,7 +32,8 @@ class ProjectController extends Controller
             'teknologi' => $request->teknologi,
         ]);
 
-        return redirect('/project');
+        return redirect('/project')
+            ->with('success', 'Project berhasil ditambahkan');
     }
 
     public function edit(Project $project)
@@ -54,13 +55,15 @@ class ProjectController extends Controller
             'teknologi' => $request->teknologi,
         ]);
 
-        return redirect('/project');
+        return redirect('/project')
+            ->with('success', 'Project berhasil diperbarui');
     }
 
     public function destroy(Project $project)
     {
         $project->delete();
 
-        return redirect('/project');
+        return redirect('/project')
+            ->with('success', 'Project berhasil dihapus');
     }
 }
