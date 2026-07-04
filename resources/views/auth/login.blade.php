@@ -1,47 +1,71 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+﻿<x-guest-layout>
+    <div class="flex items-center justify-center min-h-screen px-4 py-10">
+        <div class="auth-page auth-card">
+            <div class="text-center mb-6">
+                <h1 class="text-3xl font-semibold text-white">Login</h1>
+                <p class="mt-3 text-sm text-slate-300">Masuk ke akun portfolio kelompok dan lanjutkan ke dashboard.</p>
+            </div>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+            <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+            <form method="POST" action="{{ route('login') }}" class="space-y-5">
+                @csrf
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+                    <div>
+                        <x-input-label for="email" :value="__('Email')" class="text-white" />
+                        <x-text-input
+                            id="email"
+                            class="mt-2"
+                            type="email"
+                            name="email"
+                            :value="old('email')"
+                            required
+                            autofocus
+                            placeholder="Masukkan email"
+                        />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
+                    <div>
+                        <x-input-label for="password" :value="__('Password')" class="text-white" />
+                        <x-text-input
+                            id="password"
+                            class="mt-2"
                             type="password"
                             name="password"
-                            required autocomplete="current-password" />
+                            required
+                            placeholder="Masukkan password"
+                        />
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    <div class="flex items-center justify-between gap-4 text-sm text-gray-300">
+                        <label class="flex items-center gap-2">
+                            <input
+                                id="remember"
+                                name="remember"
+                                type="checkbox"
+                                class="h-4 w-4 rounded border-white/20 bg-slate-900 text-indigo-500 focus:ring-indigo-500"
+                            />
+                            <span>Remember me</span>
+                        </label>
+
+                        <a href="{{ route('password.request') }}" class="text-indigo-200 hover:text-white">
+                            Lupa password?
+                        </a>
+                    </div>
+
+                    <div class="space-y-3">
+                        <x-primary-button class="w-full">Login</x-primary-button>
+                        <x-secondary-button class="w-full" type="button" onclick="location.href='{{ route('register') }}'">
+                            Buat Akun Baru
+                        </x-secondary-button>
+                        <a href="{{ url('/') }}" class="inline-flex justify-center items-center w-full px-4 py-3 rounded-2xl border border-slate-500/20 text-white bg-slate-900/60 hover:bg-slate-900/80 transition">
+                            Kembali ke Beranda
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
+    </div>
 </x-guest-layout>
