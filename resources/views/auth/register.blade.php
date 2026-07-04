@@ -13,7 +13,7 @@
                         <x-input-label for="name" :value="__('Nama')" class="text-white" />
                         <x-text-input
                             id="name"
-                            class="mt-2"
+                            class="mt-2 bg-white/95 text-slate-900"
                             type="text"
                             name="name"
                             :value="old('name')"
@@ -28,7 +28,7 @@
                         <x-input-label for="email" :value="__('Email')" class="text-white" />
                         <x-text-input
                             id="email"
-                            class="mt-2"
+                            class="mt-2 bg-white/95 text-slate-900"
                             type="email"
                             name="email"
                             :value="old('email')"
@@ -42,7 +42,7 @@
                         <x-input-label for="password" :value="__('Password')" class="text-white" />
                         <x-text-input
                             id="password"
-                            class="mt-2"
+                            class="mt-2 bg-white/95 text-slate-900"
                             type="password"
                             name="password"
                             required
@@ -55,7 +55,7 @@
                         <x-input-label for="password_confirmation" :value="__('Konfirmasi Password')" class="text-white" />
                         <x-text-input
                             id="password_confirmation"
-                            class="mt-2"
+                            class="mt-2 bg-white/95 text-slate-900"
                             type="password"
                             name="password_confirmation"
                             required

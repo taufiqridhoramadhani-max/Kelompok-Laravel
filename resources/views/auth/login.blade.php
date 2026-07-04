@@ -15,7 +15,7 @@
                         <x-input-label for="email" :value="__('Email')" class="text-white" />
                         <x-text-input
                             id="email"
-                            class="mt-2"
+                            class="mt-2 bg-white/95 text-slate-900"
                             type="email"
                             name="email"
                             :value="old('email')"
@@ -30,7 +30,7 @@
                         <x-input-label for="password" :value="__('Password')" class="text-white" />
                         <x-text-input
                             id="password"
-                            class="mt-2"
+                            class="mt-2 bg-white/95 text-slate-900"
                             type="password"
                             name="password"
                             required

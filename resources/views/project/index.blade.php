@@ -126,6 +126,11 @@
         @forelse($projects as $project)
             <div class="col-md-4">
                 <div class="glass-card">
+                    @if($project->thumbnail_path)
+                        <img src="{{ asset('storage/'.$project->thumbnail_path) }}" alt="Thumbnail project" class="img-fluid w-100" style="height: 220px; object-fit: cover; border-top-left-radius: 30px; border-top-right-radius: 30px;">
+                    @else
+                        <div class="d-flex align-items-center justify-content-center" style="height: 220px; background: rgba(255,255,255,0.08); border-top-left-radius: 30px; border-top-right-radius: 30px; color: #cbd5e1;">Tidak ada thumbnail</div>
+                    @endif
                     <div class="card-body">
                         <h4>{{ $project->nama_project }}</h4>
                         <p class="text-muted">{{ $project->deskripsi }}</p>

@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::latest()->get();
+
         return view('project.index', compact('projects'));
     }
 
@@ -20,17 +22,18 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_project' => 'required',
-            'deskripsi' => 'required',
-            'teknologi' => 'required',
+        $data = $request->validate([
+            'nama_project' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'teknologi' => 'required|string|max:255',
+            'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        Project::create([
-            'nama_project' => $request->nama_project,
-            'deskripsi' => $request->deskripsi,
-            'teknologi' => $request->teknologi,
-        ]);
+        if ($request->hasFile('thumbnail')) {
+            $data['thumbnail_path'] = $request->file('thumbnail')->store('project-thumbnails', 'public');
+        }
+
+        Project::create($data);
 
         return redirect('/project');
     }
@@ -42,23 +45,32 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $project)
     {
-        $request->validate([
-            'nama_project' => 'required',
-            'deskripsi' => 'required',
-            'teknologi' => 'required',
+        $data = $request->validate([
+            'nama_project' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'teknologi' => 'required|string|max:255',
+            'thumbnail' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
-        $project->update([
-            'nama_project' => $request->nama_project,
-            'deskripsi' => $request->deskripsi,
-            'teknologi' => $request->teknologi,
-        ]);
+        if ($request->hasFile('thumbnail')) {
+            if ($project->thumbnail_path) {
+                Storage::disk('public')->delete($project->thumbnail_path);
+            }
+
+            $data['thumbnail_path'] = $request->file('thumbnail')->store('project-thumbnails', 'public');
+        }
+
+        $project->update($data);
 
         return redirect('/project');
     }
 
     public function destroy(Project $project)
     {
+        if ($project->thumbnail_path) {
+            Storage::disk('public')->delete($project->thumbnail_path);
+        }
+
         $project->delete();
 
         return redirect('/project');

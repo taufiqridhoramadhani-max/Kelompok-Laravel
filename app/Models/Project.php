@@ -9,6 +9,7 @@ class Project extends Model
     protected $fillable = [
         'nama_project',
         'deskripsi',
-        'teknologi'
+        'teknologi',
+        'thumbnail_path',
     ];
 }

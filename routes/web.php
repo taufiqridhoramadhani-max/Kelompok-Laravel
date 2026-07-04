@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IsiController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProfileController;
 
@@ -27,14 +28,16 @@ Route::get('/project', [ProjectController::class, 'index']);
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/project/create', [ProjectController::class, 'create']);
-
     Route::post('/project', [ProjectController::class, 'store']);
-
     Route::get('/project/{project}/edit', [ProjectController::class, 'edit']);
-
     Route::put('/project/{project}', [ProjectController::class, 'update']);
-
     Route::delete('/project/{project}', [ProjectController::class, 'destroy']);
+
+    Route::get('/members/create', [MemberController::class, 'create']);
+    Route::post('/members', [MemberController::class, 'store']);
+    Route::get('/members/{member}/edit', [MemberController::class, 'edit']);
+    Route::put('/members/{member}', [MemberController::class, 'update']);
+    Route::delete('/members/{member}', [MemberController::class, 'destroy']);
 
 });
 

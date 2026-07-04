@@ -109,7 +109,7 @@
             </div>
         @endif
 
-        <form action="{{ url('/project/'.$project->id) }}" method="POST">
+        <form action="{{ url('/project/'.$project->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -123,9 +123,17 @@
                 <textarea name="deskripsi" class="form-control">{{ old('deskripsi', $project->deskripsi) }}</textarea>
             </div>
 
-            <div class="mb-4">
+            <div class="mb-3">
                 <label class="form-label text-white">Teknologi</label>
                 <input type="text" name="teknologi" class="form-control" value="{{ old('teknologi', $project->teknologi) }}">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label text-white">Thumbnail</label>
+                <input type="file" name="thumbnail" class="form-control" accept="image/*">
+                @if($project->thumbnail_path)
+                    <img src="{{ asset('storage/'.$project->thumbnail_path) }}" alt="Thumbnail project" class="img-fluid rounded mt-3" style="max-height: 180px;">
+                @endif
             </div>
 
             <div class="form-actions">

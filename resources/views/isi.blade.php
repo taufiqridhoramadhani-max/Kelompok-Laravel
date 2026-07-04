@@ -132,27 +132,48 @@
         <p>Biodata dan skill anggota kelompok kami</p>
     </div>
 
+    @auth
+        <div class="text-center mb-4">
+            <a href="{{ url('/members/create') }}" class="btn btn-glass">+ Tambah Anggota</a>
+        </div>
+    @endauth
+
     <div class="row justify-content-center">
-        @foreach($anggota as $item)
+        @forelse($anggota as $item)
             <div class="col-lg-4 col-md-6 mb-5" data-aos="zoom-in" data-aos-duration="1200">
                 <div class="profile-card text-center">
                     <div class="top-design"></div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="profile-img" alt="Avatar">
+                    <img src="{{ $item->photo_path ? asset('storage/'.$item->photo_path) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}" class="profile-img" alt="Avatar">
                     <div class="p-4">
-                        <div class="name">{{ $item['nama'] }}</div>
-                        <div class="nim">NIM : {{ $item['nim'] }}</div>
+                        <div class="name">{{ $item->nama }}</div>
+                        <div class="nim">NIM : {{ $item->nim }}</div>
                         <div class="info-box">
                             <div class="info-title">Jurusan</div>
-                            <div class="info-value">{{ $item['jurusan'] }}</div>
+                            <div class="info-value">{{ $item->jurusan }}</div>
                         </div>
                         <div class="skill-title">Skill</div>
-                        @foreach($item['skill'] as $skill)
-                            <span class="skill-badge">{{ $skill }}</span>
+                        @php $skills = $item->skills ? explode(',', $item->skills) : []; @endphp
+                        @foreach($skills as $skill)
+                            <span class="skill-badge">{{ trim($skill) }}</span>
                         @endforeach
+                        @auth
+                            <div class="mt-4 d-flex justify-content-center gap-2">
+                                <a href="{{ url('/members/'.$item->id.'/edit') }}" class="btn btn-outline-light btn-sm">Edit</a>
+                                <form action="{{ url('/members/'.$item->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus anggota ini?')">Hapus</button>
+                                </form>
+                            </div>
+                        @endauth
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="col-12 text-center text-white">
+                <h4>Belum ada anggota</h4>
+            </div>
+        @endforelse
     </div>
 
     <div class="text-center mb-5">

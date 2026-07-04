@@ -1,4 +1,3 @@
-```php
 @extends('layouts.public')
 
 @section('title', 'Tambah Project')
@@ -109,7 +108,7 @@
             </div>
         @endif
 
-        <form action="{{ url('/project') }}" method="POST">
+        <form action="{{ url('/project') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -122,9 +121,14 @@
                 <textarea name="deskripsi" class="form-control">{{ old('deskripsi') }}</textarea>
             </div>
 
-            <div class="mb-4">
+            <div class="mb-3">
                 <label class="form-label text-white">Teknologi</label>
                 <input type="text" name="teknologi" class="form-control" value="{{ old('teknologi') }}">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label text-white">Thumbnail</label>
+                <input type="file" name="thumbnail" class="form-control" accept="image/*">
             </div>
 
             <div class="form-actions">
@@ -135,4 +139,3 @@
     </div>
 </div>
 @endsection
-```
